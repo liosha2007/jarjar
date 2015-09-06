@@ -17,6 +17,13 @@ the embedded class files. Bytecode transformation (via ASM) is used
 to change references to the renamed classes, and special handling is
 provided for moving resource files and transforming string literals.
 
+
+## Build FAT JAR
+Run command `gradlew clean build` (fat jar in `jarjar-command/build/libs` directory)
+
+## Using in command line:
+`java -jar .\jarjar-command-1.0.0.jar --mode process --rules <my-config.rules> --output <output-jar-file.jar> <input-jar-file.jar>`
+
 Using with ant
 --------------
 

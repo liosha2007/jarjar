@@ -1,6 +1,24 @@
 buildscript {
 	apply from: file('gradle/buildscript.gradle'), to: buildscript
+	repositories {
+		maven {
+			url 'http://repo1.maven.org/maven2'
+		}
+		jcenter {
+			url 'http://jcenter.bintray.com/'
+		}
+	}
 }
+
+repositories {
+	maven {
+		url 'http://repo1.maven.org/maven2'
+	}
+	jcenter {
+		url 'http://jcenter.bintray.com/'
+	}
+}
+
 
 apply plugin: 'org.anarres.stdproject'
 stdproject {
@@ -145,4 +163,18 @@ project(':jarjar-command') {
 	apply plugin: 'application'
 
 	mainClassName = "com.tonicsystems.jarjar.Main"
+
+
+	jar {
+		from {
+			(configurations.runtime).collect {
+				it.isDirectory() ? it : zipTree(it)
+			}
+		}
+		manifest {
+			attributes("Main-Class": mainClassName )
+		}
+	}
 }
+
+

@@ -1,5 +1,11 @@
 // Executed in context of buildscript
 repositories {
+	maven {
+		url 'http://repo1.maven.org/maven2'
+	}
+	jcenter {
+		url 'http://jcenter.bintray.com/'
+	}
 	mavenLocal()
 	mavenCentral()
 	jcenter()
